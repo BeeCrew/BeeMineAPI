@@ -11,4 +11,5 @@ If you need help getting started. Or you are stuck. you can go to our [documenta
 If you don't know how to get started, you should check out some of our [examples](https://github.com/BeeCrew/BeeMineAPI/tree/main/examples) :)
 
 # Thanks to: 👍
-- [barneygale](https://github.com/barneygale) (Creator of [Quarry](https://github.com/barneygale/quarry))
+- [barneygale](https://github.com/barneygale) (For creating [Quarry](https://github.com/barneygale/quarry))
+- [wiki.vg](https://wiki.vg) (For documenting the Minecraft Protocol)

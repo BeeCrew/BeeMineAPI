@@ -8,6 +8,12 @@ import sys
 true, false = True, False
 c = "§"
 
+def exit(exit_code: int=0):
+	try:
+		sys.exit(exit_code)
+	except:
+		quit(0)
+
 def chat_message(self, buff):
 	p_text = buff.unpack_string()
 	if not p_text.startswith('.'):
@@ -21,6 +27,8 @@ def chat_message(self, buff):
 class ChatRoomFactory(BeeFactory):
 	#Setup
 	protocol = BeeProtocol
+	protocol.gamemode = 3
+	protocol.prev_gamemode = 3
 
 	#Metadata
 	motd = 'Chat Room Example'
@@ -36,4 +44,4 @@ try:
 	factory.listen(*addr)
 	reactor.run()
 except KeyboardInterrupt:
-	sys.exit(0)
+	exit()

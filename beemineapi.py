@@ -96,44 +96,44 @@ class BeeAPI:
 		self.protocol = self.factory.protocol
 		return
 	
-	def sendMessage(self, message: str, selector: UUID=None):
+	def sendMessage(self,message: str, selector=None, isActionMsg: bool=false):
 		"""
 		Send a message to someone. Or everyone!
 		"""
 		if not selector:
 			for player in self.factory.players:
 				if player.protocol_version >= 760: #1.19.1+ Uses a boolean for weather to show in action bar
-					toActionbar = player.buff_type.pack("?", false)
+					toActionbar = player.buff_type.pack("?", isActionMsg)
 				else: #1.19- uses varint as normal.
-					toActionbar = player.buff_type.pack_varint(0)
+					if isActionMsg:
+						isActionMsg = 1
+					else:
+						isActionMsg = 0
+					toActionbar = player.buff_type.pack_varint(isActionMsg)
 				player.send_packet("system_message", 
 					player.buff_type.pack_chat(message),
 					toActionbar
 				)
 			return
 		else:
-			for player in self.factory.players:
-				if player.uuid == selector:
-					if player.protocol_version >= 760: #1.19.1+ Uses a boolean for weather to show in action bar
-						toActionbar = player.buff_type.pack("?", false)
-					else: #1.19- uses varint as normal.
-						toActionbar = player.buff_type.pack_varint(0)
-					player.send_packet("system_message", 
-						player.buff_type.pack_chat(message),
-						toActionbar
-					)
+			player = selector
+			if player.protocol_version >= 760: #1.19.1+ Uses a boolean for weather to show in action bar
+				toActionbar = player.buff_type.pack("?", false)
+			else: #1.19- uses varint as normal.
+				toActionbar = player.buff_type.pack_varint(0)
+			player.send_packet("system_message", 
+				player.buff_type.pack_chat(message),
+				toActionbar
+			)
 			return
 		return
 	
-	def loopallPlayers(self, func: Callable, passplayer: bool=true, *args, **kwargs):
+	def loopallPlayers(self, func: Callable, *args, **kwargs):
 		"""
 		Execute a function for every online player.
 		"""
 		executed = 0
 		for player in self.factory.players:
-			if passplayer:
-				func(player, *args, **kwargs)
-			else:
-				fhnc(*args, **kwargs)
+			func(player, *args, **kwargs)
 			executed += 1
 		return (executed, func)

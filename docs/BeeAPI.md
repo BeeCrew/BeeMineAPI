@@ -19,6 +19,15 @@ Execute a function for every online player.
 
 This function executes the specified function for every online player. With the arguments passed.
 
+### kick(reason: str, selector)
+```python
+"""
+Kick a player from the server.
+"""
+```
+
+This function kicks the player that is included in the specified selector.
+
 ## You have reached the end!
 You have reached the end of this docs page.
 
