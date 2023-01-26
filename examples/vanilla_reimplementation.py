@@ -1,13 +1,17 @@
 """
+This is a old version of the vanilla reimplementation.
+It has been moved to https://github.com/BeeCrew/VanilaReimplementation
+"""
+
+"""
 A vanilla reimplementation made using BeeMineAPI.
 This should NOT be used in Production.
 It is not complete.
 """
 from beemineapi import BeeProtocol, BeeFactory, BeeAPI, reactor
-import time, sys
+import sys
 true, false = True, False
 c = '§'
-cmd_prefix = '.'
 beeapi = BeeAPI()
 
 def exit(exit_code: int=0):

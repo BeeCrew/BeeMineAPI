@@ -7,6 +7,9 @@ A Minecraft Server API for Developers to make their own Servers.
 # Documentation ❤️
 If you need help getting started. Or you are stuck. you can go to our [documentation](https://github.com/BeeCrew/BeeMineAPI/tree/main/docs) for help.
 
+# Contribution! 🤝
+If you would like to help us with the project. You can contribute. Before doing so. Please read the [contributing.md](https://github.com/BeeCrew/BeeMineAPI/tree/main/contributing.md) file.
+
 # Examples 🆘
 If you don't know how to get started, you should check out some of our [examples](https://github.com/BeeCrew/BeeMineAPI/tree/main/examples) :)
 
